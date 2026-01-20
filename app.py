@@ -64,7 +64,7 @@ def calculate_gwa(df):
     return df, df_sem, overall_gwa
 
 # --- 2. THE USER INTERFACE ---
-st.set_page_config(page_title="UP Grade Calculator", layout="wide")
+st.set_page_config(page_title="UPMin Grade Calculator", layout="wide")
 
 st.title("🎓 CSRS Grade Visualizer")
 st.markdown("Upload your **CSRS Student.html** file to generate your academic dashboard.")
@@ -139,4 +139,5 @@ if uploaded_file is not None:
                 st.dataframe(processed_df[display_cols], hide_index=True, use_container_width=True)
 
     except Exception as e:
+
         st.error(f"An error occurred: {e}")
