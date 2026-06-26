@@ -149,6 +149,35 @@ if uploaded_file is not None:
                 display_cols = ['Course', 'Grade', 'Units', 'Year', 'Semester']
                 st.dataframe(processed_df[display_cols], hide_index=True, use_container_width=True)
 
+            st.divider()
+            st.subheader("📅 Course Breakdown by Term")
+            st.markdown("Expand each semester to see the specific subjects and your term GWA.")
+
+            # We use groupby to loop through every unique Year + Semester combo
+            # sort=False ensures it keeps the chronological order from the original HTML
+            for (year, sem), group in processed_df.groupby(['Year', 'Semester'], sort=False):
+                
+                # Calculate the exact GWA for just this specific semester
+                valid = group[group['Is_Included']]
+                term_units = valid['Units_Calc'].sum()
+                term_weighted = valid['Weighted_Grade'].sum()
+                term_gwa = term_weighted / term_units if term_units > 0 else 0.0
+                
+                # Create a clean title for the collapsible box
+                expander_title = f"{year} — {sem} | Term GWA: {term_gwa:.4f}"
+                
+                # Create the expander
+                with st.expander(expander_title):
+                    # We only show the relevant columns so it fits nicely
+                    display_cols = ['Course', 'Grade', 'Units']
+                    
+                    # Display the dataframe inside the expander
+                    st.dataframe(
+                        group[display_cols], 
+                        hide_index=True, 
+                        use_container_width=True
+                    )
+
     except Exception as e:
 
         st.error(f"An error occurred: {e}")
