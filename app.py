@@ -82,9 +82,9 @@ with st.expander("ℹ️ How to save and upload your CSRS.html?"):
     
     spacer1, center_col, spacer2 = st.columns([1, 2, 1])
         
-        with center_col:
-            # Putting use_container_width=True makes it fill the center column perfectly
-            st.image("tutorial.gif", caption="Visual Guide", use_column_width=True)
+    with center_col:
+        # Putting use_container_width=True makes it fill the center column perfectly
+        st.image("tutorial.gif", caption="Visual Guide", use_column_width=True)
 
 uploaded_file = st.file_uploader("Choose your HTML file", type="html")
 
