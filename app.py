@@ -81,7 +81,7 @@ with st.expander("ℹ️ How to save and upload your CSRS.html?"):
     """)
     
     # Just drop your GIF into the same folder as your script and reference it here
-    st.image("tutorial.gif", caption="Visual Guide")
+    st.image("tutorial.gif", caption="Visual Guide", width=400)
 
 uploaded_file = st.file_uploader("Choose your HTML file", type="html")
 
