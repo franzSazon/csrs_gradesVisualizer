@@ -69,6 +69,20 @@ st.set_page_config(page_title="UPMin Grade Calculator", layout="wide")
 st.title("🎓 CSRS Grade Visualizer")
 st.markdown("Upload your **CSRS Student.html** file to generate your academic dashboard.")
 
+# --- NEW: Help Tooltip / Expander ---
+with st.expander("ℹ️ How to save and upload your CSRS.html?"):
+    st.markdown("""
+    **Step-by-step guide:**
+    1. Log in to your UPMin CSRS portal.
+    2. Navigate to your **Grades** or **Student Profile** page.
+    3. Right-click anywhere on the page and select **Save As...** (or press `Ctrl+S` / `Cmd+S`).
+    4. Make sure the "Save as type" is set to **Webpage, HTML Only** or **Webpage, Complete**.
+    5. Upload that saved `.html` file below!
+    """)
+    
+    # Just drop your GIF into the same folder as your script and reference it here
+    st.image("tutorial.gif", caption="Visual Guide")
+
 uploaded_file = st.file_uploader("Choose your HTML file", type="html")
 
 if uploaded_file is not None:
