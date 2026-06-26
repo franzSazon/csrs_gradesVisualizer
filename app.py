@@ -102,7 +102,18 @@ if uploaded_file is not None:
                 elif overall_gwa <= 1.45: status = "Magna Cum Laude Standing"
                 elif overall_gwa <= 1.75: status = "Cum Laude Standing"
                 else: status = "Good Standing"
-                st.metric(label="Status", value=status)
+                
+                # Added the 'help' parameter (supports clean Markdown!)
+                st.metric(
+                    label="Status", 
+                    value=status,
+                    help=(
+                        "**UP System Honor Cutoffs:**\n\n"
+                        "🥇 **Summa Cum Laude:** 1.00 – 1.20\n\n"
+                        "🥈 **Magna Cum Laude:** 1.20 – 1.45\n\n"
+                        "🥉 **Cum Laude:** 1.45 – 1.75\n\n"
+                    )
+                )
 
             st.divider()
 
